@@ -21,6 +21,7 @@ def char(x,y):
 x = (display_width * 0.45)
 y = (display_height *0.8)
 x_change = 0
+y_change = 0
 char_speed = 0
 
 while not crashed:
@@ -30,15 +31,22 @@ while not crashed:
 
         #Player movement
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
+            if event.key == pygame.K_a:
                 x_change = -5
-            elif event.key == pygame.K_RIGHT:
+            elif event.key == pygame.K_d:
                 x_change = 5
+            if event.key == pygame.K_w:
+                y_change = -5
+            elif event.key == pygame.K_s:
+                y_change = 5
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+            if event.key == pygame.K_a or event.key == pygame.K_d:
                 x_change = 0
+            if event.key == pygame.K_w or event.key == pygame.K_s:
+                y_change = 0
 
     x += x_change
+    y += y_change
 
     gameDisplay.fill(white)
     char(x,y)
